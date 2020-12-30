@@ -27,6 +27,8 @@ import Rails from '../images/skills/rails.png'
 import React2 from '../images/skills/react-js.png'
 import Ruby from '../images/skills/ruby.png'
 import S3 from '../images/skills/S3.png'
+import LinkedIn from '../images/skills/LinkedIn.png'
+import GitHub from '../images/skills/GitHub.png'
 import Halloween from '../images/ProjectPhotos/Halloween.png'
 import GamerGazebo from '../images/ProjectPhotos/GamerGazebo.png'
 import TuoEmoc from '../images/ProjectPhotos/TuoEmoc.png'
@@ -97,6 +99,17 @@ const skills = [
     name: 'S3',
     photo: S3
   }
+]
+
+const references = [{
+  name: "Github",
+  link: "https://github.com/StevenKOtt",
+  photo: GitHub
+},{
+  name: "LinkedIn",
+  link: "https://www.linkedin.com/in/stevenkarlott/",
+  photo: LinkedIn
+}
 ]
 const projects = [
   {
@@ -210,10 +223,38 @@ const Index = ({allMD}) => {
     <Grid container direction="column" alignItems="center" justify="center" spacing={3}> 
       <Grid item xs={12}></Grid>
       {/* //Profile picture row. */}
-      <Grid item xs={12}>
-        <Avatar className={classes.large} src={ProfilePicture}/>
+      <Grid container item xs={12} alignItems="center" justify="center">
+      <Grid item xs={2}></Grid>
+      <Grid item xs={4} style={{justifyContent: "center"}}>
+          <Avatar className={classes.large} src={ProfilePicture} onClick={()=> window} />
+        </Grid>
+        <Grid item xs={4}>
+        <Typography variant="h4">
+          Hi there, I’m Steven. I have a background in troubleshooting, software engineering, and integration support. Using my interpersonal skills, I build rapport for companies externally and internally, and thrive to be a resource in a variety of situations. Using my technical skills I want to build the relationship between Engineer and Success teams. 
+        </Typography>
+        </Grid>
+        <Grid item xs={2}></Grid>
       </Grid>
+
       <Grid item xs={12}></Grid>
+      <Grid container item xs={12} alignItems="center" justify="center" spacing={2}>
+        {references.map((reference)=> (
+         
+            <Grid item xs={4} sm={2} style={{ justifyContent: "center", display: "flex" }} className={classes.center}>
+            <a href={reference.link} target="_blank">
+              <Tooltip title={reference.name} aria-label={reference.name}>
+                  <Avatar src={reference.photo} className={classes.small}/>
+              </Tooltip>
+              </a> 
+            </Grid>
+         
+          ))}
+      </Grid>
+      <Grid item xs={12}>
+          <Typography variant='h2'>
+            Skills
+          </Typography>
+      </Grid>
       <Grid container item direction='row' justify="center" alignItems="center" xs={12} space={2}>
         <Grid container item xs={10}  alignItems="center" justify="center" spacing={5}>
           {skills.map((skill)=> (
@@ -224,6 +265,11 @@ const Index = ({allMD}) => {
             </Grid>
           ))}
         </Grid>
+      </Grid>
+      <Grid item xs={12}>
+          <Typography variant='h2'>
+            Projects
+          </Typography>
       </Grid>
       <Grid container item xs={12} direction="row" alignItems="center" justify="center">
         {projects.map((project)=> (
@@ -284,8 +330,6 @@ const Index = ({allMD}) => {
         ))}
       </Grid>
     </Grid>
-
-    <MDList posts={allMD}/>
   </Layout>)
 }
 

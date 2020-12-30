@@ -20,7 +20,6 @@ export default function Layout({ children, pageTitle, ...props }) {
       </Head>
       <Header />
       <main className="layout">{children}</main>
-      <Footer />
     </>
   );
 }
